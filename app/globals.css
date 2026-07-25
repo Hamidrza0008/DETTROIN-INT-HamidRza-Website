@@ -20,6 +20,12 @@
   --color-secondary: var(--secondary);
   --color-foreground: var(--foreground);
 
+  /* friendly aliases used across components */
+  --color-navy: var(--primary);
+  --color-gold: var(--accent);
+  --color-blue: var(--secondary);
+  --color-ink: var(--foreground);
+
   --font-heading: var(--font-heading);
   --font-body: var(--font-body);
 }
@@ -37,4 +43,8 @@ h4,
 h5,
 h6 {
   font-family: var(--font-heading), serif;
+}
+
+.site-container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
 }

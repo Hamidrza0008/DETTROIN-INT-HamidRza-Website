@@ -1,5 +1,4 @@
 import { Playfair_Display, Inter } from "next/font/google";
-import BackgroundLayer from "@/components/BackgroundLayer";
 import Navbar from "@/components/Navbar";
 import "./globals.css";
 
@@ -25,7 +24,6 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${playfairDisplay.variable} ${inter.variable}`}>
       <body className="min-h-full flex flex-col">
-        <BackgroundLayer />
         <Navbar />
         {children}
       </body>

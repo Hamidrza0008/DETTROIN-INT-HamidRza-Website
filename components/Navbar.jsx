@@ -2,18 +2,34 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import {
+  Home,
+  Info,
+  BookOpen,
+  ClipboardList,
+  Building2,
+  Images,
+  Phone,
+} from "lucide-react";
+
+const EASE = [0.22, 1, 0.36, 1];
 
 const NAV_LINKS = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
-  { label: "Academics", href: "/#academics" },
-  { label: "Admissions", href: "/#admissions" },
-  { label: "Campus", href: "/#campus" },
-  { label: "Gallery", href: "/#gallery" },
-  { label: "Contact", href: "/#contact" },
+  { label: "Home", href: "/", icon: Home },
+  { label: "About", href: "/#about", icon: Info },
+  { label: "Academics", href: "/#academics", icon: BookOpen },
+  { label: "Admissions", href: "/#admissions", icon: ClipboardList },
+  { label: "Campus", href: "/#campus", icon: Building2 },
+  { label: "Gallery", href: "/#gallery", icon: Images },
+  { label: "Contact", href: "/#contact", icon: Phone },
 ];
+
+const fadeItem = {
+  hidden: { opacity: 0, y: -10 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.3, ease: EASE } },
+};
 
 function HamburgerIcon() {
   return (
@@ -58,9 +74,21 @@ function ArrowIcon() {
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    document.body.style.overflow = open ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
-    <header className="fixed inset-x-0 top-4 z-50 px-4 md:top-6 md:px-6">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-primary/5 bg-background/80 py-2 pl-3 pr-3 shadow-lg shadow-primary/5 backdrop-blur-xl md:py-2.5 md:pl-4 md:pr-4">
+    <motion.header
+      initial={{ opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.7, ease: EASE }}
+      className="fixed inset-x-0 top-4 z-50 px-4 md:top-6 md:px-6"
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-white/50 bg-white/25 py-2 pl-3 pr-3 shadow-lg shadow-primary/5 backdrop-blur-xl transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10 md:py-2.5 md:pl-4 md:pr-4">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo/logo.png"
@@ -68,7 +96,7 @@ export default function Navbar() {
             width={160}
             height={178}
             priority
-            className="h-11 w-auto md:h-12"
+            className="h-11 w-auto transition-transform duration-300 hover:scale-105 md:h-12"
           />
         </Link>
 
@@ -94,7 +122,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/#admissions"
-            className="hidden items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white transition-transform duration-300 hover:scale-[1.03] hover:shadow-md hover:shadow-primary/20 md:inline-flex"
+            className="hidden items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:scale-[1.03] hover:shadow-lg hover:shadow-primary/25 md:inline-flex"
           >
             Apply Now
             <ArrowIcon />
@@ -114,43 +142,66 @@ export default function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -12 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-            className="mx-auto mt-3 max-w-6xl rounded-3xl border border-primary/5 bg-background/95 p-4 shadow-lg shadow-primary/5 backdrop-blur-xl lg:hidden"
-          >
-            <nav className="flex flex-col divide-y divide-primary/10">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className={`px-4 py-3.5 text-sm font-medium transition-colors hover:bg-primary/5 hover:text-primary ${
-                    link.label === "Home" ? "text-primary" : "text-foreground/70"
-                  }`}
-                >
-                  <span className="relative inline-block">
-                    {link.label}
-                    {link.label === "Home" && (
-                      <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-accent" />
-                    )}
-                  </span>
-                </Link>
-              ))}
-            </nav>
-            <Link
-              href="/#admissions"
+          <>
+            <motion.div
+              key="overlay"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE }}
               onClick={() => setOpen(false)}
-              className="mt-3 flex items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-3 text-sm font-medium text-white"
+              className="fixed inset-0 -z-10 bg-primary/30 backdrop-blur-md lg:hidden"
+            />
+            <motion.div
+              key="panel"
+              initial={{ opacity: 0, y: -16, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -16, scale: 0.98 }}
+              transition={{ duration: 0.4, ease: EASE }}
+              className="mx-auto mt-3 max-w-6xl rounded-3xl border border-white/50 bg-white/30 p-3 shadow-2xl shadow-primary/10 backdrop-blur-xl lg:hidden"
             >
-              Apply Now
-              <ArrowIcon />
-            </Link>
-          </motion.div>
+              <motion.nav
+                initial="hidden"
+                animate="show"
+                variants={{ hidden: {}, show: { transition: { staggerChildren: 0.05 } } }}
+                className="flex flex-col divide-y divide-primary/10"
+              >
+                {NAV_LINKS.map((link) => (
+                  <motion.div key={link.href} variants={fadeItem}>
+                    <Link
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={`flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors hover:bg-primary/5 hover:text-primary ${
+                        link.label === "Home" ? "text-primary" : "text-foreground/70"
+                      }`}
+                    >
+                      <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/5 text-primary">
+                        <link.icon className="h-3.5 w-3.5" strokeWidth={1.75} />
+                      </span>
+                      <span className="relative inline-block">
+                        {link.label}
+                        {link.label === "Home" && (
+                          <span className="absolute -bottom-1 left-0 h-0.5 w-full rounded-full bg-accent" />
+                        )}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
+              </motion.nav>
+              <motion.div variants={fadeItem} initial="hidden" animate="show">
+                <Link
+                  href="/#admissions"
+                  onClick={() => setOpen(false)}
+                  className="mt-2 flex items-center justify-center gap-1.5 rounded-full bg-primary px-5 py-3 text-sm font-medium text-white transition-transform duration-300 hover:scale-[1.02]"
+                >
+                  Apply Now
+                  <ArrowIcon />
+                </Link>
+              </motion.div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
-    </header>
+    </motion.header>
   );
 }
