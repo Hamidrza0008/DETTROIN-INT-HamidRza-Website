@@ -6,6 +6,7 @@ import Gallery from "@/components/Gallery";
 import Achievements from "@/components/Achievements";
 import Testimonials from "@/components/Testimonials";
 import AdmissionProcess from "@/components/AdmissionProcess";
+import Contact from "@/components/Contact";
 import AmbientBackground from "@/components/AmbientBackground";
 
 export default function Home() {
@@ -20,6 +21,7 @@ export default function Home() {
       <Achievements />
       <Testimonials />
       <AdmissionProcess />
+      <Contact />
     </div>
   );
 }
