@@ -8,7 +8,6 @@ import {
   BarChart3,
   CalendarDays,
   GraduationCap,
-  Sparkle,
   ArrowRight,
 } from "lucide-react";
 
@@ -21,70 +20,12 @@ const fadeUp = {
 
 const BADGES = ["CBSE Affiliated", "Smart Classrooms", "95% Board Results"];
 
-const SPARKLES = [
-  { top: "12%", left: "6%", size: 14, delay: 0 },
-  { top: "78%", left: "10%", size: 10, delay: 1.4 },
-  { top: "22%", left: "94%", size: 12, delay: 0.8 },
-  { top: "60%", left: "88%", size: 9, delay: 2.2 },
-];
-
 export default function Hero() {
   return (
     <section
       id="home"
-      className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-background pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14"
+      className="relative flex min-h-screen flex-col justify-center pt-24 pb-10 sm:pt-28 sm:pb-12 lg:pt-32 lg:pb-14"
     >
-      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <motion.div
-          className="absolute -bottom-32 -left-24 h-104 w-104 rounded-full bg-blue/20 blur-3xl"
-          animate={{ x: [0, 20, 0], y: [0, -14, 0] }}
-          transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-blue/15 blur-3xl"
-          animate={{ x: [0, -18, 0], y: [0, 12, 0] }}
-          transition={{ duration: 26, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-        />
-
-        <div
-          className="absolute bottom-0 right-0 h-72 w-72 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(to right, rgba(37,99,235,0.14) 1px, transparent 1px), linear-gradient(to bottom, rgba(37,99,235,0.14) 1px, transparent 1px)",
-            backgroundSize: "32px 32px",
-            maskImage: "linear-gradient(to top left, black 20%, transparent 75%)",
-            WebkitMaskImage: "linear-gradient(to top left, black 20%, transparent 75%)",
-          }}
-        />
-
-        <svg
-          className="absolute top-0 left-0 h-28 w-28 text-gold/60 sm:h-36 sm:w-36"
-          viewBox="0 0 120 120"
-          fill="none"
-        >
-          <path d="M0 60C40 60 60 40 60 0" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
-        <svg
-          className="absolute top-0 right-0 h-28 w-28 text-gold/60 sm:h-36 sm:w-36"
-          viewBox="0 0 120 120"
-          fill="none"
-        >
-          <path d="M120 60C80 60 60 40 60 0" stroke="currentColor" strokeWidth="1.5" />
-        </svg>
-
-        {SPARKLES.map((s, i) => (
-          <motion.span
-            key={i}
-            className="absolute text-gold"
-            style={{ top: s.top, left: s.left }}
-            animate={{ opacity: [0.15, 0.85, 0.15] }}
-            transition={{ duration: 3.5, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
-          >
-            <Sparkle size={s.size} fill="currentColor" strokeWidth={0} />
-          </motion.span>
-        ))}
-      </div>
-
       <div className="site-container relative z-10 grid grid-cols-1 items-center gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-16 xl:grid-cols-[1fr_1.35fr] xl:gap-20">
         <div className="order-2 lg:order-1">
           <motion.h1
@@ -121,7 +62,7 @@ export default function Hero() {
               variants={fadeUp}
               whileHover={{ y: -3 }}
               whileTap={{ y: 0 }}
-              className="group inline-flex items-center justify-center gap-2 rounded-full bg-navy px-8 py-4 text-sm font-semibold tracking-wide text-white shadow-[0_16px_32px_-12px_rgba(15,23,42,0.55)] transition-shadow duration-300 hover:shadow-[0_20px_40px_-10px_rgba(15,23,42,0.6)]"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-blue px-8 py-4 text-sm font-semibold tracking-wide text-white shadow-[0_16px_32px_-12px_rgba(37,99,235,0.5)] transition-shadow duration-300 hover:shadow-[0_20px_40px_-10px_rgba(37,99,235,0.55)]"
             >
               Apply for Admission
               <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

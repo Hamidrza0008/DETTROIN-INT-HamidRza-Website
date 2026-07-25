@@ -105,9 +105,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={`group relative text-sm font-medium transition-colors hover:text-primary ${
-                link.label === "Home" ? "text-primary" : "text-foreground/70"
-              }`}
+              className="group relative text-sm font-medium text-primary transition-colors"
             >
               {link.label}
               <span
