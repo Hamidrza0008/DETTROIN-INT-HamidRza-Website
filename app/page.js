@@ -3,7 +3,6 @@ import About from "@/components/About";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import Academics from "@/components/Academics";
 import Gallery from "@/components/Gallery";
-import Achievements from "@/components/Achievements";
 import Testimonials from "@/components/Testimonials";
 import AdmissionProcess from "@/components/AdmissionProcess";
 import Contact from "@/components/Contact";
@@ -18,7 +17,6 @@ export default function Home() {
       <WhyChooseUs />
       <Academics />
       <Gallery />
-      <Achievements />
       <Testimonials />
       <AdmissionProcess />
       <Contact />
