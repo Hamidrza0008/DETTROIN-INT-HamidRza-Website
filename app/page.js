@@ -4,6 +4,7 @@ import WhyChooseUs from "@/components/WhyChooseUs";
 import Academics from "@/components/Academics";
 import Gallery from "@/components/Gallery";
 import Achievements from "@/components/Achievements";
+import Testimonials from "@/components/Testimonials";
 import AmbientBackground from "@/components/AmbientBackground";
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Academics />
       <Gallery />
       <Achievements />
+      <Testimonials />
     </div>
   );
 }
