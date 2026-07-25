@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import Academics from "@/components/Academics";
 import AmbientBackground from "@/components/AmbientBackground";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <About />
       <WhyChooseUs />
+      <Academics />
     </div>
   );
 }

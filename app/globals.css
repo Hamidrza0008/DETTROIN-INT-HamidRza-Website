@@ -30,6 +30,10 @@
   --font-body: var(--font-body);
 }
 
+html {
+  scroll-padding-top: 6rem;
+}
+
 body {
   background: var(--color-background);
   color: var(--color-foreground);
