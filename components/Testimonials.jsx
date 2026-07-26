@@ -44,7 +44,7 @@ const fadeUp = {
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="relative py-20 sm:py-24 lg:py-28">
+    <section id="testimonials" className="relative py-8 sm:py-10 lg:py-14">
       <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

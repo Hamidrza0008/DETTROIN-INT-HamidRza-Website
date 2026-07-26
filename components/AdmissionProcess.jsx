@@ -82,7 +82,7 @@ export default function AdmissionProcess() {
   });
 
   return (
-    <section id="admissions" className="relative py-20 sm:py-24 lg:py-28">
+    <section id="admissions" className="relative py-8 sm:py-10 lg:py-14">
       <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
