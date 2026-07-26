@@ -102,7 +102,19 @@ export default function Academics() {
   const mobile = useScrollProgress(mobileRef);
 
   return (
-    <section id="academics" className="relative py-8 sm:py-10 lg:py-14">
+    <section id="academics" className="relative overflow-hidden py-8 sm:py-10 lg:py-14">
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 bottom-0 -z-10 h-96 w-96 rounded-full bg-blue/15 blur-3xl"
+        animate={{ x: [0, -14, 0], y: [0, 10, 0] }}
+        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 top-0 -z-10 h-72 w-72 rounded-full bg-blue/10 blur-3xl"
+        animate={{ x: [0, 12, 0], y: [0, -8, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+      />
       <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}

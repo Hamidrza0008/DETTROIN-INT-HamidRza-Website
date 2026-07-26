@@ -33,7 +33,19 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-8 sm:py-10 lg:py-14">
+    <section id="contact" className="relative overflow-hidden py-8 sm:py-10 lg:py-14">
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-24 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue/15 blur-3xl"
+        animate={{ x: [0, -14, 0], y: [0, 10, 0] }}
+        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        aria-hidden="true"
+        className="pointer-events-none absolute -left-24 bottom-0 -z-10 h-72 w-72 rounded-full bg-blue/10 blur-3xl"
+        animate={{ x: [0, 12, 0], y: [0, -8, 0] }}
+        transition={{ duration: 18, repeat: Infinity, ease: "easeInOut", delay: 2.5 }}
+      />
       <div className="site-container">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -147,7 +159,7 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex w-full items-center justify-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white shadow-md transition-shadow duration-300 hover:shadow-lg"
+                  className="flex w-full items-center justify-center gap-2 rounded-full bg-blue px-6 py-3 text-sm font-semibold text-white shadow-[0_12px_28px_-10px_rgba(37,99,235,0.45)] transition-shadow duration-300 hover:shadow-[0_16px_36px_-10px_rgba(37,99,235,0.55)]"
                 >
                   Send Message
                   <Send className="h-4 w-4" strokeWidth={2} />
