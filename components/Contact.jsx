@@ -34,11 +34,9 @@ export default function Contact() {
 
   return (
     <section id="contact" className="relative overflow-hidden py-8 sm:py-10 lg:py-14">
-      <motion.div
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 top-1/3 -z-10 h-96 w-96 rounded-full bg-blue/15 blur-3xl"
-        animate={{ x: [0, -14, 0], y: [0, 10, 0] }}
-        transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
+        className="pointer-events-none absolute -right-24 top-1/3 -z-10 h-64 w-64 rounded-full bg-blue/5 blur-3xl"
       />
       <motion.div
         aria-hidden="true"

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { Users, Award, Heart, ShieldCheck } from "lucide-react";
 
@@ -21,23 +21,39 @@ const fadeUp = {
 
 function Counter({ value, suffix = "" }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
-    if (!inView) return;
-    const duration = 1800;
-    const start = performance.now();
+    const el = ref.current;
+    if (!el) return;
+    let observer;
     let raf;
-    const tick = (now) => {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setDisplay(Math.floor(eased * value));
-      if (progress < 1) raf = requestAnimationFrame(tick);
+    const startCounter = () => {
+      const duration = 1800;
+      const start = performance.now();
+      const tick = (now) => {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(Math.floor(eased * value));
+        if (progress < 1) raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
     };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [inView, value]);
+    observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          startCounter();
+          observer.disconnect();
+        }
+      },
+      { threshold: 0 }
+    );
+    observer.observe(el);
+    return () => {
+      observer?.disconnect();
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [value]);
 
   return (
     <span ref={ref}>
@@ -84,21 +100,13 @@ function AboutImage({ src, alt, badge, reverse = false, aspectClass = "aspect-4/
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="relative overflow-hidden py-8 sm:py-10 lg:py-14"
-    >
-      <motion.div
+<section
+        id="about"
+        className="relative overflow-hidden py-8 sm:py-10 lg:py-14"
+      >
+      <div
         aria-hidden="true"
-        className="pointer-events-none absolute -right-24 top-0 -z-10 h-96 w-96 rounded-full bg-blue/15 blur-3xl"
-        animate={{ x: [0, -12, 0], y: [0, 8, 0] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden="true"
-        className="pointer-events-none absolute -left-24 bottom-0 -z-10 h-80 w-80 rounded-full bg-blue/10 blur-3xl"
-        animate={{ x: [0, 14, 0], y: [0, -10, 0] }}
-        transition={{ duration: 24, repeat: Infinity, ease: "easeInOut", delay: 3 }}
+        className="pointer-events-none absolute -right-24 top-0 -z-10 h-64 w-64 rounded-full bg-blue/5 blur-3xl"
       />
       <div className="site-container">
         <motion.div

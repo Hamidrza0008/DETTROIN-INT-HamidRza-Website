@@ -35,8 +35,8 @@ export default function Footer() {
         }}
       />
 
-      <div className="site-container relative py-14 sm:py-16 lg:py-20">
-        <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:gap-8">
+      <div className="site-container relative py-12 sm:py-16 lg:py-20">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr] lg:gap-8">
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -49,10 +49,10 @@ export default function Footer() {
                 alt="Krishna International School"
                 width={64}
                 height={71}
-                className="h-14 w-auto"
+                className="h-12 w-auto sm:h-14"
               />
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/60">
+            <p className="mt-4 text-sm leading-relaxed text-white/60 sm:max-w-xs">
               Amongst the best CBSE schools in Aligarh — dedicated to academic excellence
               and holistic growth for every student.
             </p>
@@ -81,7 +81,7 @@ export default function Footer() {
             <h3 className="text-sm font-semibold uppercase tracking-wide text-gold">
               Quick Links
             </h3>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-4 grid grid-cols-2 gap-x-4 gap-y-2 sm:flex sm:flex-col sm:space-y-2.5">
               {QUICK_LINKS.map((link) => (
                 <li key={link.href}>
                   <Link
@@ -107,15 +107,15 @@ export default function Footer() {
             <ul className="mt-4 space-y-3 text-sm text-white/65">
               <li className="flex items-start gap-2.5">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
-                Delhi G.T. Road, Aligarh – 202001 (U.P.), India
+                <span>Delhi G.T. Road, Aligarh – 202001 (U.P.), India</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Phone className="h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
-                +91 98370 50000
+                <span>+91 98370 50000</span>
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 shrink-0 text-gold" strokeWidth={1.75} />
-                info@kisaligarh.com
+                <span>info@kisaligarh.com</span>
               </li>
             </ul>
           </motion.div>
@@ -134,7 +134,7 @@ export default function Footer() {
             </p>
             <Link
               href="/#admissions"
-              className="mt-4 inline-flex items-center gap-1.5 rounded-full bg-gold px-5 py-2.5 text-sm font-semibold text-primary transition-transform duration-300 hover:scale-105"
+              className="mt-4 inline-flex w-full items-center justify-center gap-1.5 rounded-full bg-gold px-5 py-3 text-sm font-semibold text-primary transition-transform duration-300 hover:scale-[1.02] sm:w-auto sm:py-2.5"
             >
               Apply Now
               <ArrowRight className="h-4 w-4" strokeWidth={2} />
@@ -142,11 +142,11 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        <div className="mt-12 flex flex-col items-center gap-2 border-t border-white/10 pt-6 text-center sm:flex-row sm:justify-between sm:text-left">
-          <p className="text-xs text-white/40">
-            © {new Date().getFullYear()} Krishna International School. All rights reserved.
+        <div className="mt-10 flex flex-col items-center gap-1 border-t border-white/10 pt-5 text-center sm:mt-12 sm:flex-row sm:justify-between sm:pt-6 sm:text-left">
+          <p className="text-[11px] leading-relaxed text-white/40 sm:text-xs">
+            &copy; {new Date().getFullYear()} Krishna International School. All rights reserved.
           </p>
-          <p className="text-xs text-white/40">Dedicated to Excellence</p>
+          <p className="text-[11px] text-white/40 sm:text-xs">Dedicated to Excellence</p>
         </div>
       </div>
     </footer>
