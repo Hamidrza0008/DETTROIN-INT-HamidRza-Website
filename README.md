@@ -11,7 +11,7 @@ A modern, responsive redesign of [kisaligarh.com](https://kisaligarh.com/), buil
 | | |
 |---|---|
 | **Full Name** | Hamid Rza |
-| **Intern ID** | _[Add your Intern ID here]_ |
+| **Intern ID** | - |
 | **Email Address** | hamidrza0008@gmail.com |
 | **GitHub Username** | _[Add your GitHub username here]_ |
 | **Selected Website** | [kisaligarh.com](https://kisaligarh.com/) |
