@@ -1,13 +1,15 @@
+import dynamic from "next/dynamic";
 import Hero from "@/components/Hero";
-import About from "@/components/About";
-import WhyChooseUs from "@/components/WhyChooseUs";
-import Academics from "@/components/Academics";
-import Gallery from "@/components/Gallery";
-import Testimonials from "@/components/Testimonials";
-import AdmissionProcess from "@/components/AdmissionProcess";
-import Contact from "@/components/Contact";
 import AmbientBackground from "@/components/AmbientBackground";
 import StringDivider from "@/components/StringDivider";
+
+const About = dynamic(() => import("@/components/About"));
+const WhyChooseUs = dynamic(() => import("@/components/WhyChooseUs"));
+const Academics = dynamic(() => import("@/components/Academics"));
+const Gallery = dynamic(() => import("@/components/Gallery"));
+const Testimonials = dynamic(() => import("@/components/Testimonials"));
+const AdmissionProcess = dynamic(() => import("@/components/AdmissionProcess"));
+const Contact = dynamic(() => import("@/components/Contact"));
 
 export default function Home() {
   return (

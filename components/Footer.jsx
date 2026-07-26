@@ -10,8 +10,10 @@ const EASE = [0.16, 1, 0.3, 1];
 const QUICK_LINKS = [
   { label: "Home", href: "/" },
   { label: "About", href: "/#about" },
+  { label: "Why Us", href: "/#why-us" },
   { label: "Academics", href: "/#academics" },
   { label: "Gallery", href: "/#gallery" },
+  { label: "Testimonials", href: "/#testimonials" },
   { label: "Admissions", href: "/#admissions" },
   { label: "Contact", href: "/#contact" },
 ];

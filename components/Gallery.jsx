@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Expand, Camera } from "lucide-react";
 
 const EASE = [0.16, 1, 0.3, 1];
@@ -22,6 +22,8 @@ const fadeUp = {
 };
 
 export default function Gallery() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section id="gallery" className="relative py-8 sm:py-10 lg:py-14">
       <div className="site-container">
@@ -80,12 +82,12 @@ export default function Gallery() {
             className="relative col-span-2 flex h-full flex-col items-center justify-center gap-3 overflow-hidden rounded-2xl bg-navy p-4 text-center shadow-sm sm:col-span-4"
           >
             <motion.span
-              animate={{ rotate: 360 }}
+              animate={reduceMotion ? undefined : { rotate: 360 }}
               transition={{ duration: 24, repeat: Infinity, ease: "linear" }}
               className="absolute h-16 w-16 rounded-full border border-dashed border-gold/30"
             />
             <motion.div
-              animate={{ y: [0, -6, 0] }}
+              animate={reduceMotion ? undefined : { y: [0, -6, 0] }}
               transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               className="relative"
             >

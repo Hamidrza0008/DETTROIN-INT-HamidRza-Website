@@ -96,7 +96,7 @@ export default function Navbar() {
           if (entry.isIntersecting) setActiveId(entry.target.id);
         });
       },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
+      { rootMargin: "-10% 0px -10% 0px", threshold: 0 }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -108,9 +108,9 @@ export default function Navbar() {
       initial={{ opacity: 0, y: -24 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.7, ease: EASE }}
-      className="fixed inset-x-0 top-4 z-50 px-4 md:top-6 md:px-6"
+      className="fixed inset-x-0 top-4 z-50 px-4 sm:px-6 lg:px-8 md:top-6"
     >
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 rounded-full border border-white/50 bg-white/25 py-2 pl-3 pr-3 shadow-lg shadow-primary/5 backdrop-blur-xl transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10 md:py-2.5 md:pl-4 md:pr-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-full border border-white/50 bg-white/25 py-2 pl-3 pr-3 shadow-lg shadow-primary/5 backdrop-blur-xl transition-shadow duration-300 hover:shadow-xl hover:shadow-primary/10 md:py-2.5 md:pl-4 md:pr-4">
         <Link href="/" className="flex shrink-0 items-center">
           <Image
             src="/images/logo/logo.png"
@@ -122,7 +122,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <nav className="hidden items-center gap-5 xl:flex">
+        <nav className="hidden flex-1 items-center justify-end gap-12 xl:flex">
           {NAV_LINKS.map((link) => {
             const isActive = activeId === link.id;
             return (
@@ -183,7 +183,7 @@ export default function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -16, scale: 0.98 }}
               transition={{ duration: 0.4, ease: EASE }}
-              className="mx-auto mt-3 max-w-6xl rounded-3xl border border-white/50 bg-white/30 p-3 shadow-2xl shadow-primary/10 backdrop-blur-xl xl:hidden"
+              className="mx-auto mt-3 max-w-7xl rounded-3xl border border-white/50 bg-white/30 p-3 shadow-2xl shadow-primary/10 backdrop-blur-xl xl:hidden"
             >
               <motion.nav
                 initial="hidden"

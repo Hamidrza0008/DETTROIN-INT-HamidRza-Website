@@ -114,7 +114,7 @@ export default function About() {
         {/* Row 1: image left, text right */}
         <div className="mt-14 grid grid-cols-1 items-center gap-12 lg:mt-20 lg:grid-cols-[1.05fr_1fr] lg:gap-16">
           <AboutImage
-            src="/images/about/campus.png"
+            src="/images/about/campus.jpg"
             alt="Krishna International School campus building"
             badge={{ value: "5 Acres", label: "Green, Pollution-Free Campus" }}
             aspectClass="aspect-video"
@@ -173,7 +173,7 @@ export default function About() {
 
           <AboutImage
             reverse
-            src="/images/about/campus2.png"
+            src="/images/about/campus2.jpg"
             alt="Krishna International School students and facilities"
             aspectClass="aspect-video"
           />

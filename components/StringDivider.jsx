@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import {
+  motion,
+  useMotionValue,
+  useSpring,
+  useTransform,
+  useReducedMotion,
+} from "framer-motion";
 
 const HEIGHT = 64;
 const MID = HEIGHT / 2;
@@ -9,6 +15,9 @@ const MID = HEIGHT / 2;
 export default function StringDivider() {
   const containerRef = useRef(null);
   const [width, setWidth] = useState(0);
+  const rafId = useRef(null);
+  const prefersReducedMotion = useReducedMotion();
+
   const mouseX = useMotionValue(0);
   const pluck = useMotionValue(0);
   const springPluck = useSpring(pluck, { stiffness: 220, damping: 7, mass: 0.7 });
@@ -27,14 +36,23 @@ export default function StringDivider() {
     mouseX.set(width / 2);
   }, [width, mouseX]);
 
+  useEffect(() => () => rafId.current && cancelAnimationFrame(rafId.current), []);
+
   const d = useTransform([mouseX, springPluck], ([mx, py]) => {
     return `M0,${MID} Q${mx},${MID + py} ${width},${MID}`;
   });
 
   const handleMouseMove = (e) => {
-    const rect = containerRef.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    pluck.set((e.clientY - rect.top - MID) * 1.6);
+    if (prefersReducedMotion) return;
+    const clientX = e.clientX;
+    const clientY = e.clientY;
+    if (rafId.current) return;
+    rafId.current = requestAnimationFrame(() => {
+      rafId.current = null;
+      const rect = containerRef.current.getBoundingClientRect();
+      mouseX.set(clientX - rect.left);
+      pluck.set((clientY - rect.top - MID) * 1.6);
+    });
   };
 
   const handleMouseLeave = () => {

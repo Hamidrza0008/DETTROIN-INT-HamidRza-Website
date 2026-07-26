@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { Sparkle } from "lucide-react";
 
 const SPARKLES = [
@@ -11,6 +11,8 @@ const SPARKLES = [
 ];
 
 export default function AmbientBackground() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <div
       aria-hidden="true"
@@ -27,12 +29,12 @@ export default function AmbientBackground() {
       {/* blue glows — kept strictly within the Hero viewport, never bleeding past it */}
       <motion.div
         className="absolute -right-24 -top-24 h-80 w-80 rounded-full bg-blue/15 blur-3xl"
-        animate={{ x: [0, -18, 0], y: [0, 12, 0] }}
+        animate={reduceMotion ? undefined : { x: [0, -18, 0], y: [0, 12, 0] }}
         transition={{ duration: 26, repeat: Infinity, ease: "easeInOut", delay: 2 }}
       />
       <motion.div
         className="absolute -left-24 top-[20vh] h-80 w-80 rounded-full bg-blue/15 blur-3xl"
-        animate={{ x: [0, 20, 0], y: [0, -14, 0] }}
+        animate={reduceMotion ? undefined : { x: [0, 20, 0], y: [0, -14, 0] }}
         transition={{ duration: 22, repeat: Infinity, ease: "easeInOut" }}
       />
 
@@ -58,7 +60,7 @@ export default function AmbientBackground() {
           key={i}
           className="absolute text-gold"
           style={{ top: s.top, left: s.left }}
-          animate={{ opacity: [0.15, 0.85, 0.15] }}
+          animate={reduceMotion ? undefined : { opacity: [0.15, 0.85, 0.15] }}
           transition={{ duration: 3.5, repeat: Infinity, delay: s.delay, ease: "easeInOut" }}
         >
           <Sparkle size={s.size} fill="currentColor" strokeWidth={0} />

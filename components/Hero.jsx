@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   CheckCircle2,
   Users,
@@ -21,6 +21,8 @@ const fadeUp = {
 const BADGES = ["CBSE Affiliated", "Smart Classrooms", "95% Board Results"];
 
 export default function Hero() {
+  const reduceMotion = useReducedMotion();
+
   return (
     <section
       id="home"
@@ -107,12 +109,12 @@ export default function Hero() {
           className="order-1 relative mx-auto w-full max-w-xl lg:order-2 lg:max-w-none"
         >
           <motion.div
-            animate={{ y: [0, -10, 0] }}
+            animate={reduceMotion ? undefined : { y: [0, -10, 0] }}
             transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             className="relative aspect-4/3 w-full overflow-hidden rounded-2xl border border-navy/10 shadow-[0_40px_80px_-30px_rgba(15,23,42,0.45)] sm:aspect-video sm:rounded-4xl"
           >
             <Image
-              src="/images/hero/school.png"
+              src="/images/hero/school.jpg"
               alt="Krishna International School campus building with students"
               fill
               priority
@@ -156,6 +158,8 @@ export default function Hero() {
 }
 
 function StatCard({ icon: Icon, value, label, delay = 0, className = "" }) {
+  const reduceMotion = useReducedMotion();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -164,7 +168,7 @@ function StatCard({ icon: Icon, value, label, delay = 0, className = "" }) {
       className={`absolute z-20 max-w-30 sm:max-w-none ${className}`}
     >
       <motion.div
-        animate={{ y: [0, -8, 0] }}
+        animate={reduceMotion ? undefined : { y: [0, -8, 0] }}
         transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay }}
         whileHover={{ scale: 1.05, y: -4 }}
         className="flex items-center gap-1.5 rounded-xl border border-white/60 bg-white/25 px-2 py-1.5 shadow-[0_12px_30px_-16px_rgba(15,23,42,0.45)] backdrop-blur-xl transition-shadow duration-300 hover:shadow-[0_20px_40px_-16px_rgba(15,23,42,0.5)] sm:gap-3 sm:rounded-2xl sm:px-4 sm:py-3 sm:shadow-[0_20px_45px_-20px_rgba(15,23,42,0.4)]"
