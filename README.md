@@ -13,7 +13,7 @@ A modern, responsive redesign of [kisaligarh.com](https://kisaligarh.com/), buil
 | **Full Name** | Hamid Rza |
 | **Intern ID** | - |
 | **Email Address** | hamidrza0008@gmail.com |
-| **GitHub Username** | _[Add your GitHub username here]_ |
+| **GitHub Username** | hamidrza0008 |
 | **Selected Website** | [kisaligarh.com](https://kisaligarh.com/) |
 | **Live Demo** | [dettroin-int-hamid-rza-website.vercel.app](https://dettroin-int-hamid-rza-website.vercel.app/) |
 
